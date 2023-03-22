@@ -9,14 +9,14 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { UserDTO, UserUpdateDTO } from './user.dto';
+import { UserRequestDTO, UserUpdateDTO } from './user.dto';
 import { AuthGuard } from 'src/guards/auth.guard';
 
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
   @Post()
-  async create(@Body() data: UserDTO) {
+  async create(@Body() data: UserRequestDTO) {
     return this.userService.create(data);
   }
 

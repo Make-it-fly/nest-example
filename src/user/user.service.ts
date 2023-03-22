@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.client';
-import { UserDTO, UserResponseDTO, UserUpdateDTO } from './user.dto';
+import { UserRequestDTO, UserDTO, UserUpdateDTO } from './user.dto';
 import * as bcrypt from 'bcrypt';
 import { instanceToPlain } from 'class-transformer';
 
@@ -8,7 +8,7 @@ import { instanceToPlain } from 'class-transformer';
 export class UserService {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: UserDTO) {
+  async create(data: UserRequestDTO) {
     const userExists = await this.prisma.user.findFirst({
       where: {
         email: data.email,

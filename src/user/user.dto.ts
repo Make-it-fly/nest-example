@@ -8,7 +8,7 @@ import {
   IsString,
 } from 'class-validator';
 
-export class UserDTO {
+export class UserRequestDTO {
   @IsEmail()
   email: string;
 
@@ -20,7 +20,7 @@ export class UserDTO {
   password: string;
 }
 
-export class UserResponseDTO {
+export class UserDTO {
   @IsEmail()
   email: string;
 
@@ -39,4 +39,4 @@ export class UserResponseDTO {
   isAdmin: boolean;
 }
 
-export class UserUpdateDTO extends PartialType(UserDTO) {}
+export class UserUpdateDTO extends PartialType(UserRequestDTO) {}
