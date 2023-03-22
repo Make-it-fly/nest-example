@@ -15,8 +15,6 @@ export class UserService {
       },
     });
 
-    console.log(userExists);
-
     if (userExists) {
       throw new HttpException('User already exists', HttpStatus.BAD_REQUEST);
     }
@@ -32,11 +30,8 @@ export class UserService {
 
   async findAll() {
     return this.prisma.user.findMany({
-      select: {
-        email: true,
-        id: true,
-        name: true,
-        isAdmin: true,
+      include: {
+        traits: true,
       },
     });
   }

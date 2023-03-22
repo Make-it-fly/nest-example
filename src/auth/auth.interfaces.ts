@@ -14,6 +14,13 @@ export interface UserPayload {
   isAdmin: boolean;
 }
 
+export interface UserFromJWT {
+  id: number;
+  email: string;
+  name?: string;
+  isAdmin: boolean;
+}
+
 export interface UserToken {
   access_token: string;
 }

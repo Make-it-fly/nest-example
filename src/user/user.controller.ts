@@ -6,21 +6,23 @@ import {
   Patch,
   Param,
   Delete,
-  UseGuards,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserRequestDTO, UserUpdateDTO } from './user.dto';
-import { AuthGuard } from 'src/guards/auth.guard';
+import { IsPublic } from 'src/auth/decorators/is-public.decorator';
 
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
+
+  @IsPublic()
   @Post()
   async create(@Body() data: UserRequestDTO) {
+    console.log(data);
     return this.userService.create(data);
   }
 
-  @UseGuards(AuthGuard)
+  @IsPublic()
   @Get()
   async findAll() {
     return this.userService.findAll();

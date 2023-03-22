@@ -12,6 +12,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Trait {
+  id Int @default(autoincrement()) @id
+  name String
+  userId Int
+
+  user User @relation(fields: [userId], references: [id])
+  @@map("traits")
+}
 model User {
   id    Int       @default(autoincrement()) @id
   email String    @unique
@@ -19,5 +27,6 @@ model User {
   password String 
   isAdmin Boolean @default(false)
 
+  traits Trait[]
   @@map("users")
 }
