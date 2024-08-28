@@ -36,3 +36,32 @@ Authorization: Bearer {{TOKEN}}
 ### Delete an User
 DELETE {{BASEURL}}/users/10
 
+###  =========== TRAITS ========== 
+
+### Get All Traits
+GET {{BASEURL}}/users/traits
+Content-Type: application/json
+
+### Get Specific Trait
+GET {{BASEURL}}/users/traits/1
+Content-Type: application/json
+
+### Create a Trait
+POST {{BASEURL}}/users/1/traits
+Content-Type: application/json
+
+{
+  "name": "Funny"
+}
+
+### Update a Trait
+PATCH {{BASEURL}}/users/traits/1
+Content-Type: application/json
+
+{
+  "name": "Cool"
+}
+
+### Delete a Trait
+DELETE {{BASEURL}}/users/traits/1
+Content-Type: application/json
