@@ -1,0 +1,38 @@
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjIyMTFAbWFpbC5jb20iLCJzdWIiOjEsIm5hbWUiOiJsdWNhcyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MjQ4NjMxMDIsImV4cCI6MTcyNzQ1NTEwMn0.uGWgiuciW7mGWGEXQfHFvLmM-arSAxtNjrLUUdGoPLk
+@BASEURL=http://localhost:3000
+### Login
+POST {{BASEURL}}/login
+Content-Type: application/json
+
+{
+  "email": "admin@mail.com",
+  "password": "1234"
+}
+### Create New User
+POST {{BASEURL}}/users
+Content-Type: application/json
+
+{
+  "email": "admin@mail.com",
+  "password": "1234",
+  "name": "lucas",
+}
+
+### Get All Users
+GET {{BASEURL}}/users
+
+### Update an User
+PATCH {{BASEURL}}/users/1
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "id": 1,
+  "email": "admin@mail.com",
+  "name": "lucas 2",
+  "isAdmin": true
+}
+
+### Delete an User
+DELETE {{BASEURL}}/users/10
+
